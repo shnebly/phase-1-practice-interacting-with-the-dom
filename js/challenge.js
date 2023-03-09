@@ -1,5 +1,5 @@
 // User can see the timer increment every second once the page has loaded.
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
 console.log('START LOADED')
 
 function isCounting() {
@@ -19,8 +19,24 @@ plusBtn.addEventListener('click', isCounting);
 
 // "Like" an individual number of the counter. I should see the count of the number of "likes" associated with that number displayed.
 const heartBtn = document.querySelector('#heart');
-const comments = document.querySelector('#list');
 const submitBtn = document.querySelector('#submit');
+let li = document.createElement('li');
+let likesObj = {};
+
+heartBtn.addEventListener('click', () => {
+    let cV = document.querySelector('#counter').innerText;
+    let ul = document.querySelector('.likes');
+    
+    if(likesObj[cV]){
+        likesObj[cV] += 1
+    }else{
+        likesObj[cV] = 1 
+    }
+    
+    li.innerText = `${[cV]} has been liked ${likesObj[cV]} times`
+    console.log(li)
+
+});
 
 // Pause the counter, which should: pause the counter, disable all other buttons, toggle 'pause' 'resume'
 const pauseBtn = document.querySelector('#pause');
@@ -57,4 +73,4 @@ form.addEventListener('submit', (e) => {
 })
 
 console.log('END LOADED')
-}); //DOM Loaded
+// }); //DOM Loaded
