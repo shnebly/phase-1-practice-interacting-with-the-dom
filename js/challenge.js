@@ -22,7 +22,6 @@ const heartBtn = document.querySelector('#heart');
 const comments = document.querySelector('#list');
 const submitBtn = document.querySelector('#submit');
 
-
 // Pause the counter, which should: pause the counter, disable all other buttons, toggle 'pause' 'resume'
 const pauseBtn = document.querySelector('#pause');
 pauseBtn.addEventListener('click', () => {
@@ -43,15 +42,19 @@ pauseBtn.addEventListener('click', () => {
     }
 });
 
-
-
-
-
-
-
 // Leave comments on my gameplay, such as: "Wow, what a fun game this is."
+// const input = document.querySelector('#comment-input');
+const form = document.querySelector('#comment-form');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const list = document.querySelector('#list');
+    let li = document.createElement('li');
+    li.innerText = e.target[0].value;
+    list.append(li);
+    form.reset(); // -> another way is form.innerText = "";
 
-
+    
+})
 
 console.log('END LOADED')
 }); //DOM Loaded
